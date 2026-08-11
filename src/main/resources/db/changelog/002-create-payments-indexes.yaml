@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-payments-indexes
+      author: matvey
+      changes:
+        - createIndex:
+            collectionName: payments
+            keys:
+              order_id: 1
+            options:
+              name: idx_payments_order_id
+              unique: true
+        - createIndex:
+            collectionName: payments
+            keys:
+              user_id: 1
+            options:
+              name: idx_payments_user_id
+        - createIndex:
+            collectionName: payments
+            keys:
+              status: 1
+            options:
+              name: idx_payments_status
+        - createIndex:
+            collectionName: payments
+            keys:
+              timestamp: 1
+            options:
+              name: idx_payments_timestamp
+        - createIndex:
+            collectionName: payments
+            keys:
+              user_id: 1
+              status: 1
+            options:
+              name: idx_payments_user_status

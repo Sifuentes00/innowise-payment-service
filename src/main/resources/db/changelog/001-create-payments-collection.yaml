@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-payments-collection
+      author: matvey
+      changes:
+        - createCollection:
+            collectionName: payments
+            validator:
+              $jsonSchema:
+                bsonType: object
+                required:
+                  - order_id
+                  - user_id
+                  - status
+                  - timestamp
+                  - payment_amount
+                properties:
+                  order_id:
+                    bsonType: string
+                  user_id:
+                    bsonType: string
+                  status:
+                    bsonType: string
+                    enum:
+                      - PENDING
+                      - COMPLETED
+                      - FAILED
+                      - CANCELLED
+                      - REFUNDED
+                  timestamp:
+                    bsonType: date
+                  payment_amount:
+                    bsonType: decimal
